@@ -1,0 +1,698 @@
+/*! == MEDIA QUERIES == */
+
+
+/*===========MEDIA QUERIES==========*/
+
+@each $name,
+$size in $breakpoints {
+
+	@media (max-width: #{$size}) {
+
+		@for $i from 1 through $col-count {
+
+			.container.cols-#{$name}-#{$i}>.col {
+				grid-column: span $i !important;
+			}
+		}
+
+		@for $gridColumnOne from 1 to $col-count {
+			@for $gridColumnTwo from 1 to $col-count {
+				/*&.cols-#{$name}-#{$gridColumnOne}-#{$gridColumnTwo}{
+	                > .col:nth-of-type(2n -1) {
+	                    grid-column: span $gridColumnOne !important;
+	                }
+	                > .col:nth-of-type(2n) {
+	                    grid-column: span $gridColumnTwo !important;
+	                }
+	            }*/
+			}
+		}
+
+		@for $gridOffset from 1 to $col-count {
+			@for $grid from 1 to $col-count {
+				/*&.cols-offset-#{$name}-#{$gridOffset}-#{$grid} > .col{
+	                grid-column-start:($gridOffset + 1) !important;
+	                grid-column-end:(($gridOffset + 1) + $grid) !important;
+	            }*/
+			}
+		}
+
+		.align-#{$name}-center {
+			text-align: center;
+		}
+
+		.align-#{$name}-left {
+			text-align: left;
+		}
+
+		.hide-#{$name} {
+			display: none;
+		}
+
+		.show-#{$name} {
+			display: block;
+		}
+
+		$distance: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20); // Amount string.
+		$sides: (top, bottom, left, right); // Sides var
+
+		@each $amount in $distance {
+			@each $side in $sides {
+				.m-#{$name}-#{str-slice($side, 0, 1)}#{$amount} {
+					margin-#{$side}: #{$amount}em;
+				}
+
+				.p-#{$name}-#{str-slice($side, 0, 1)}#{$amount} {
+					padding-#{$side}: #{$amount}em;
+				}
+			}
+		}
+	}
+}
+
+/*===========LARGE (1200px)==========*/
+
+@media only screen and (max-width: 1200px) {
+
+	/*---GLOBALS---*/
+	.container {
+		padding-left: rem-calc(20);
+		padding-right: rem-calc(20);
+
+		&.grid-gap {
+			grid-gap: 1em;
+		}
+	}
+
+	.cols-xl-2-10-10 {
+		>.col:nth-of-type(3n - 2) {
+			grid-column: span 2 !important;
+		}
+
+		>.col:nth-of-type(3n -1) {
+			grid-column: span 10 !important;
+		}
+
+		>.col:nth-of-type(3n) {
+			grid-column: span 10 !important;
+		}
+	}
+
+	/*---HEADER---*/
+
+	/*---CONTENT---*/
+	.hero {
+		.pt15 {
+			padding-top: 10em;
+		}
+
+		.col__double-list {
+			font-size: rem-calc(18);
+		}
+	}
+
+	.image-overlap {
+		position: relative;
+
+		&__tn50 {
+			top: 1rem;
+		}
+
+		div {
+			position: relative;
+			background-size: contain;
+			background-position: center;
+			width: 100%;
+		}
+
+		&__h130 {
+			height: rem-calc(250);
+		}
+	}
+
+	.single-carousel-item {
+		>div {
+			padding: rem-calc(10) rem-calc(20);
+		}
+	}
+
+	.how-image {
+		padding-top: rem-calc(100);
+	}
+
+	.mid-carousel {
+		.owl-nav {
+			width: rem-calc(400);
+			left: calc(50% - 200px);
+		}
+
+		.item {
+			.content-container {
+				height: 80%;
+			}
+		}
+
+		.center {
+			.item {
+				.content-container {
+					top: 10%;
+				}
+			}
+		}
+	}
+
+	.research_content {
+		column-count: 2;
+	}
+
+	.for-section {
+		margin-bottom: 2em;
+	}
+
+	.introducing {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.mob-rows-2 {
+		grid-template-rows: 1fr 1fr;
+	}
+
+	/*---FOOTER---*/
+
+}
+
+/*---end large mq---*/
+
+
+/*===========MEDIUM (992px)==========*/
+
+@media only screen and (max-width: 992px) {
+
+	/*---GLOBALS---*/
+	.container {
+		&.grid-gap {
+			grid-gap: 0.2em;
+		}
+	}
+
+	/*---HEADER---*/
+	header {
+		padding: 0;
+		background-color: white;
+		box-shadow: none !important;
+	}
+
+	#nav {
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+
+		ul {
+			display: block;
+		}
+
+		.mainMenu {
+			max-height: 0;
+			overflow: hidden;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: white;
+			box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+
+			li {
+				display: block;
+				padding-top: rem-calc(10);
+				padding-bottom: rem-calc(10);
+
+				a {
+					color: $brand-mid-grey;
+				}
+			}
+
+			&.active {
+				max-height: 75vh;
+				transition: $slowEffect;
+				box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		.buy-now {
+			display: none;
+		}
+	}
+
+	.mobileMenu {
+		display: block;
+	}
+
+	/*---CONTENT---*/
+	.home_hero {
+		background-size: cover !important;
+		background-position: 75% center !important;
+		min-height: 0;
+
+		.pt15 {
+			padding-top: 5em;
+		}
+
+		.col__double-list {
+			li {
+				margin-bottom: rem-calc(15);
+			}
+		}
+	}
+
+	.mid-carousel {
+		.owl-nav {
+			width: rem-calc(500);
+			left: calc(50% - 250px);
+		}
+	}
+
+	.conditions {
+		.filter {
+			.wrapper-radio {
+				padding: 0;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+
+				.mixitup-control {
+					height: 100%;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.mixitup-control-active {
+					background-color: $brand-primary;
+					color: white;
+				}
+
+				>div {
+					width: 25%;
+					border-right: 1px solid white;
+					border-bottom: 1px solid white;
+					text-align: center;
+					height: rem-calc(50);
+					display: flex;
+					align-content: center;
+					justify-content: center;
+				}
+			}
+		}
+	}
+
+	.effective-content {
+		flex-wrap: wrap;
+
+		>div {
+			width: 100%;
+		}
+
+		&__image {
+			height: rem-calc(300);
+		}
+
+		&:nth-of-type(odd) {
+			.effective-content__content {
+				order: 2;
+			}
+
+			.effective-content__image {
+				order: 1;
+			}
+		}
+
+		&:nth-of-type(even) {
+			.effective-content__content {
+				order: 2;
+			}
+
+			.effective-content__image {
+				order: 1;
+			}
+		}
+	}
+
+	.features-page {
+		min-height: 0 !important;
+		height: auto !important;
+	}
+
+	/*---FOOTER---*/
+
+}
+
+/*---end medium mq---*/
+
+
+/*===========SMALL (768px)==========*/
+
+@media only screen and (max-width: 768px) {
+
+	/*---GLOBALS---*/
+	.heading {
+		&__xl {
+			font-size: rem-calc(32)
+		}
+
+		&__lg {
+			font-size: rem-calc(26)
+		}
+	}
+
+	.cols-sm-24-24-24 {
+		>.col:nth-of-type(3n - 2) {
+			grid-column: span 24 !important;
+		}
+
+		>.col:nth-of-type(3n -1) {
+			grid-column: span 24 !important;
+		}
+
+		>.col:nth-of-type(3n) {
+			grid-column: span 24 !important;
+		}
+	}
+
+	.container.cols-offset-6-12>.col,
+	.container.cols-offset-4-16>.col {
+
+		grid-column-start: 2;
+		grid-column-end: 24;
+	}
+
+	.container.cols-offset-12-12>.col {
+		grid-column-start: 1;
+	}
+
+	.align-right {
+		text-align: left;
+	}
+
+	/*---HEADER---*/
+	#nav {
+		padding-left: 1em;
+		padding-right: 1em;
+
+		.container {
+			padding: 0;
+		}
+	}
+
+	#logo {
+		svg {
+			width: auto;
+		}
+	}
+
+	.hero {
+		min-height: 50vh;
+
+		&__halfimage {
+			&__background {
+				left: 0;
+				width: 100%;
+			}
+
+			&__content {
+				padding-left: 1em;
+				padding-right: 1em;
+			}
+		}
+	}
+
+	.home_hero {
+		>.container {
+			grid-template-rows: auto auto;
+
+			>.heading {
+				margin-top: 5rem;
+			}
+		}
+
+	}
+
+	.owl-carousel .owl-nav.disabled {
+		display: block;
+	}
+
+	/*---CONTENT---*/
+	.h100 {
+		height: auto !important;
+	}
+
+	.col__double-list ul li {
+		width: 100% !important;
+	}
+
+	.single-carousel {
+		.owl-nav {
+			.owl-next {
+				&::before {
+					left: -1.5rem;
+				}
+			}
+
+			.owl-prev {
+				&::before {
+					right: -1.5rem;
+				}
+			}
+		}
+
+		.bgImage {
+			padding-bottom: rem-calc(150);
+		}
+	}
+
+	.buy-now-section {
+		img {
+			max-width: rem-calc(125);
+		}
+
+		.mt-10 {
+			margin-top: -5rem;
+		}
+
+		.pl5 {
+			padding-left: rem-calc(10);
+		}
+
+		.pr5 {
+			padding-right: rem-calc(10);
+		}
+	}
+
+	.conditions-container {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+
+	.mid-carousel {
+		.item {
+			height: rem-calc(600);
+			display: flex;
+			align-items: flex-end;
+			width: 100%;
+
+			.content-container {
+				position: relative;
+				width: 100%;
+				padding-bottom: rem-calc(200);
+
+				.heading__sm {
+					font-size: rem-calc(14);
+				}
+			}
+		}
+
+		.center {
+			.item {
+				.content-container {
+					top: 0%;
+				}
+			}
+		}
+	}
+
+	.conditions {
+		.filter {
+			.wrapper-radio {
+				>div {
+					width: 50%;
+				}
+			}
+		}
+
+		.condition-item {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+	}
+
+	.effective-content {
+		&__content {
+			padding-left: 2em;
+			padding-right: 2em;
+		}
+	}
+
+	.benefit__content {
+		img {
+			max-width: rem-calc(72);
+			margin-bottom: rem-calc(10);
+		}
+	}
+
+	.ajax-loader {
+		display: block !important;
+	}
+
+	.social {
+		&:last-of-type {
+			padding-right: 0;
+		}
+	}
+
+	.contact {
+		display: block;
+		padding-top: rem-calc(50);
+	}
+
+	.research_content {
+		column-count: 1;
+	}
+
+	.research_carousel {
+		overflow: hidden;
+	}
+
+	.warranty {
+		img {
+			max-width: rem-calc(100);
+		}
+	}
+
+	.documentation {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.hero__halfimage__content.slide-up.active {
+		opacity: 0.7;
+
+		// .heading {
+		// 	color: white;
+		// }
+	}
+
+	/*---FOOTER---*/
+	.colophon,
+	.mandatory {
+		margin-bottom: rem-calc(25);
+	}
+
+	.mandatory {
+		.divider {
+			display: none;
+		}
+	}
+
+	.table_item {
+		display: grid;
+		grid-template-columns: 1fr;
+
+		span {
+			width: 49%;
+			display: inline-block;
+		}
+
+		.table_title {
+			&:nth-of-type(n+2) {
+				display: none;
+			}
+		}
+
+		.table_title,
+		.table_content {
+			border-right: 0;
+		}
+	}
+
+	.footerMenu {
+		display: block;
+
+		ul {
+			li {
+				text-align: center;
+				display: inline-block;
+
+				a {
+					padding-left: rem-calc(5);
+					padding-top: rem-calc(10);
+				}
+
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+/*---end small mq---*/
+
+
+/*===========EXTRA SMALL (576px)==========*/
+
+@media only screen and (max-width: 576px) {
+
+	/*---GLOBALS---*/
+
+	/*---HEADER---*/
+
+	/*---CONTENT---*/
+
+	/*---FOOTER---*/
+
+}
+
+/*---end extra small mq---*/
+
+
+/*===========MAPBOX (640px)==========*/
+
+@media screen and (max-width: 640px) {
+
+	.mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+		width: 240px;
+		max-width: 360px;
+		font-size: 15px;
+		line-height: 20px;
+	}
+
+	.mapboxgl-ctrl-geocoder--icon-search {
+		top: 8px;
+		left: 7px;
+		width: 20px;
+		height: 20px;
+	}
+
+	.mapboxgl-ctrl-geocoder--icon-close {
+		margin-top: 3px;
+		margin-right: 0;
+		width: 16px;
+		height: 16px;
+	}
+
+	.mapboxgl-ctrl-geocoder--input {
+		height: 36px;
+		padding: 6px 35px;
+	}
+
+}
+
+/*---end mapbox mq---*/

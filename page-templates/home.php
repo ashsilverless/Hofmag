@@ -133,7 +133,7 @@ get_header();?>
     </div>
     <div class="align-center pt2">
         <a class="button pr3 pl3 pt1 pb1 button__secondary button__color-white button__caps button__hover-primary button__hover-text-white"
-            href="<?php the_sub_field('link');?>"><?php the_sub_field('button_text');?></a>
+            href="<?php the_sub_field('link');?>"><?php the_field('button_text');?></a>
     </div>
 </section>
 <?php endwhile; endif;?>

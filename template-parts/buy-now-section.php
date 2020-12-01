@@ -9,7 +9,7 @@
 				<img src="<?php echo esc_url($image['url']); ?>" class="mt-10 pb2 slide-up"/>
 				<h5 class="heading heading__brand-color heading__lg slow-fade"><?php the_sub_field('buy_title');?></h5>
 				<p class="slow-fade"><?php the_sub_field('buy_content');?></p>
-				<a class="button pr3 pl3 pt1 pb1 button__secondary button__color-white button__caps button__hover-primary button__hover-text-white" href="<?php the_sub_field('link');?>">Learn More</a>
+				<a class="button pr3 pl3 pt1 pb1 button__secondary button__color-white button__caps button__hover-primary button__hover-text-white" href="<?php the_sub_field('link');?>"><?php the_sub_field('button_text');?></a>
 			</div>
 		</div>
 	</div>
